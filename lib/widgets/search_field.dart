@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+
+import '../controllers/search_controller.dart';
+import '../screens/search_result.dart';
+
+class SearchField extends StatelessWidget {
+  SearchField({Key? key}) : super();
+  final textController = TextEditingController();
+  final searchController = Get.put(SearchController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      height: 36,
+      child: TextField(
+        style: TextStyle(color: Colors.white),
+        controller: textController,
+        onSubmitted: (text) {
+          searchController.search(text);
+          searchController.isLoading = true;
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SearchResult(),
+              ));
+        },
+        decoration: const InputDecoration(
+
+            // focusColor: Colors.transparent,
+
+            // suffix: textController.text != null ? Icon(Icons.close) : null,
+            hintText: 'Search songs, albums, artist'),
+      ),
+    );
+  }
+}
