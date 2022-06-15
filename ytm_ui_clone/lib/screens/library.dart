@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ytmusic_clone/widgets/custom_appBar.dart';
+import 'package:ytm_ui_clone/widgets/custom_appBar.dart';
 
 class Library extends StatelessWidget {
   const Library({Key? key}) : super(key: key);

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ytmusic_clone/controllers/home_controller.dart';
-import 'package:ytmusic_clone/models/get_home.dart';
-import 'package:ytmusic_clone/screens/search.dart';
-import 'package:ytmusic_clone/widgets/choice_chip_list.dart';
-import 'package:ytmusic_clone/widgets/custom_appBar.dart';
+import 'package:ytm_ui_clone/controllers/home_controller.dart';
+import 'package:ytm_ui_clone/models/get_home.dart';
+import 'package:ytm_ui_clone/screens/search.dart';
+import 'package:ytm_ui_clone/widgets/choice_chip_list.dart';
+import 'package:ytm_ui_clone/widgets/custom_appBar.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);

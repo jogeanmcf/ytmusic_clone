@@ -1,4 +1,4 @@
-import 'package:ytmusic_clone/models/yt_search.dart';
+import 'package:ytm_ui_clone/models/yt_search.dart';
 
 class HomeSession {
   String? title;

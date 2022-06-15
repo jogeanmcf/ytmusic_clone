@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart';
-import 'package:ytmusic_clone/models/get_home.dart';
-import 'package:ytmusic_clone/models/yt_search.dart';
+import 'package:ytm_ui_clone/models/get_home.dart';
+import 'package:ytm_ui_clone/models/yt_search.dart';
 
 class API {
   static Future<List<YTSearch>> search(String text) async {

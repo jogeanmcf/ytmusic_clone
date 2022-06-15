@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ytmusic_clone/controllers/theme_controller.dart';
-import 'package:ytmusic_clone/screens/explore.dart';
-import 'package:ytmusic_clone/screens/home.dart';
-import 'package:ytmusic_clone/screens/library.dart';
-import 'package:ytmusic_clone/screens/search.dart';
+import 'package:ytm_ui_clone/controllers/theme_controller.dart';
+import 'package:ytm_ui_clone/screens/explore.dart';
+import 'package:ytm_ui_clone/screens/home.dart';
+import 'package:ytm_ui_clone/screens/library.dart';
+import 'package:ytm_ui_clone/screens/search.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

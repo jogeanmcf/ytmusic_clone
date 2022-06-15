@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ytmusic_clone/models/get_home.dart';
+import 'package:ytm_ui_clone/models/get_home.dart';
 import '../api/api_conection.dart';
 import '../models/yt_search.dart';
 

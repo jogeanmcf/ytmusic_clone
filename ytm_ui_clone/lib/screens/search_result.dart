@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ytmusic_clone/api/api_conection.dart';
-import 'package:ytmusic_clone/main.dart';
-import 'package:ytmusic_clone/models/yt_search.dart';
-import 'package:ytmusic_clone/widgets/choice_chip_list.dart';
-import 'package:ytmusic_clone/widgets/search_field.dart';
+import 'package:ytm_ui_clone/api/api_conection.dart';
+import 'package:ytm_ui_clone/main.dart';
+import 'package:ytm_ui_clone/models/yt_search.dart';
+import 'package:ytm_ui_clone/widgets/choice_chip_list.dart';
+import 'package:ytm_ui_clone/widgets/search_field.dart';
 
 import '../controllers/search_controller.dart';
 
