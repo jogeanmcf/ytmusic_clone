@@ -30,27 +30,28 @@ class _HomeState extends State<Home> {
     return CustomScrollView(
       slivers: [
         SliverAppBar(
-          leading: Expanded(
-            child: Row(
-              children: [
-                Image.asset('assets/ytm-logo.png', width: 32, height: 32),
-                Text('Music', style: TextStyle(fontSize: 24))
-              ],
-            ),
+          automaticallyImplyLeading: false,
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Image.asset('assets/ytm-logo.png', width: 32, height: 32),
+              //todo: mudar o estilo do "Music"
+              Text('Music', style: TextStyle(fontSize: 24))
+            ],
           ),
           actions: [
-            Icon(Icons.cast),
-            SizedBox(width: 15),
+            const Icon(Icons.cast),
+            const SizedBox(width: 15),
             IconButton(
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SearchPage()));
               },
             ),
-            SizedBox(width: 15),
-            CircleAvatar(),
-            SizedBox(width: 15)
+            const SizedBox(width: 15),
+            const CircleAvatar(),
+            const SizedBox(width: 15)
           ],
         ),
         SliverAppBar(
@@ -83,10 +84,10 @@ class Session extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-            margin: EdgeInsets.only(top: 20, left: 20),
+            margin: const EdgeInsets.only(top: 20, left: 20),
             child: Text(
               session.title ?? 'title',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             )),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

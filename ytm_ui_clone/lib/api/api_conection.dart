@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:ytm_ui_clone/models/get_home.dart';
+import 'package:ytm_ui_clone/models/mood_and_genres.dart';
 import 'package:ytm_ui_clone/models/yt_search.dart';
 
 class API {
@@ -16,7 +17,13 @@ class API {
   static Future<List<HomeSession>> getHome() async {
     //TODO: implement try catch erro
     final response = await get(Uri.http('localhost:5000', 'home'));
-    List data = jsonDecode(response.body);
+    final List data = jsonDecode(response.body);
     return HomeSession.listOf(data);
+  }
+
+  static Future<List<MoodAndGenre>> getMoodsAndGenres() async {
+    final response = await get(Uri.http('localhost:5000', 'moods-and-genres'));
+    final data = jsonDecode(response.body);
+    return MoodAndGenre.listOf(data);
   }
 }

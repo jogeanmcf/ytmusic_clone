@@ -12,10 +12,10 @@ class Library extends StatelessWidget {
         child: Center(
           child: ListView(
             children: [
-              ListTile(
-                leading: Icon(Icons.download_sharp),
-                title: Text('Download'),
-                trailing: Icon(Icons.navigate_next),
+              const ListTile(
+                leading: const Icon(Icons.download_sharp),
+                title: const Text('Download'),
+                trailing: const Icon(Icons.navigate_next),
               ),
               ListTile(
                 leading: Icon(Icons.playlist_play),

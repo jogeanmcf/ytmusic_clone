@@ -4,7 +4,6 @@ import 'package:ytm_ui_clone/controllers/theme_controller.dart';
 import 'package:ytm_ui_clone/screens/explore.dart';
 import 'package:ytm_ui_clone/screens/home.dart';
 import 'package:ytm_ui_clone/screens/library.dart';
-import 'package:ytm_ui_clone/screens/search.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

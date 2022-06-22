@@ -9,7 +9,7 @@ class ThemeController extends GetxController {
 
 mixin MyThemeData implements ThemeData {
   static ThemeData dark = ThemeData(
-      primaryColor: Colors.black,
+      primaryColor: Colors.white,
       focusColor: Colors.white,
       indicatorColor: Colors.white,
       textTheme: const TextTheme(
