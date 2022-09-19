@@ -4,7 +4,13 @@ import 'package:ytm_ui_clone/controllers/home_controller.dart';
 import 'package:ytm_ui_clone/models/get_home.dart';
 import 'package:ytm_ui_clone/screens/search.dart';
 import 'package:ytm_ui_clone/widgets/choice_chip_list.dart';
-import 'package:ytm_ui_clone/widgets/custom_appBar.dart';
+
+import '../widgets/videos_trends.dart';
+
+//TODO: Adicionar esolhas rápidas
+//TODO: Adicionar parecido com
+//TODO: Adicionar Explore (Lançamentos, Paradas, Momentos e Generos)
+//TODO: Rounded avatar para artistas
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -65,9 +71,17 @@ class _HomeState extends State<Home> {
                 child: Container(
                     child: Center(child: CircularProgressIndicator())))
             : SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                return Session(homeController.homeContent[index]);
-              }, childCount: homeController.homeContent.length))
+                delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return Column(
+                    children: [
+                      Session(homeController.homeContent[index]),
+                      VideosTrendsWidget()
+                    ],
+                  );
+                },
+                childCount: 3,
+              )),
       ],
     );
   }

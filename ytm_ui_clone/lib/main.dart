@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ytm_ui_clone/controllers/theme_controller.dart';
+import 'package:ytm_ui_clone/models/trends.dart';
 import 'package:ytm_ui_clone/screens/explore.dart';
 import 'package:ytm_ui_clone/screens/home.dart';
 import 'package:ytm_ui_clone/screens/library.dart';
+import 'package:ytm_ui_clone/api/api_conection.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,14 +65,11 @@ class _HomePageState extends State<Main> {
         onTap: _onItemTapped,
         selectedItemColor: Colors.blue,
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () async {
+
+      //   },
+      // ),
     );
   }
-}
-
-enum MusicOptions {
-  training,
-  energy,
-  relax,
-  inTransit,
-  focus,
 }

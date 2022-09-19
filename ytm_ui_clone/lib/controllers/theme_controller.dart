@@ -59,7 +59,15 @@ mixin MyThemeData implements ThemeData {
 
           // floatingLabelAlignment: FloatingLabelAlignment.center,
           hintStyle: TextStyle(color: Color.fromARGB(255, 87, 87, 87)),
-          labelStyle: TextStyle(color: Color.fromARGB(255, 87, 87, 87))));
+          labelStyle: TextStyle(color: Color.fromARGB(255, 87, 87, 87))),
+      listTileTheme: const ListTileThemeData(
+        textColor: Colors.white,
+        iconColor: Colors.white,
+      ),
+      dividerColor: const Color.fromARGB(255, 87, 87, 87),
+      tabBarTheme: TabBarTheme(
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white.withOpacity(0.6)));
 
   static ThemeData light = ThemeData();
 }

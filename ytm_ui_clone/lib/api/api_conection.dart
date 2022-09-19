@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:ytm_ui_clone/models/get_home.dart';
 import 'package:ytm_ui_clone/models/mood_and_genres.dart';
+import 'package:ytm_ui_clone/models/trends.dart';
 import 'package:ytm_ui_clone/models/yt_search.dart';
 
 class API {
@@ -25,5 +26,24 @@ class API {
     final response = await get(Uri.http('localhost:5000', 'moods-and-genres'));
     final data = jsonDecode(response.body);
     return MoodAndGenre.listOf(data);
+  }
+
+  static Future<Trends> getVideosTrends<VideosTrend>() async {
+    final response = await get(Uri.http('localhost:5000', 'trends'));
+    final data = jsonDecode(response.body);
+    return Trends.fromJson<VideosTrend>(data, TrendType.videos);
+  }
+
+  static Future<Trends> getSongsTrends<SongsTrend>() async {
+    final response = await get(Uri.http('localhost:5000', 'trends'));
+    final data = jsonDecode(response.body);
+    return Trends.fromJson(data, TrendType.songs);
+  }
+
+  static Future<Trends> getArtistsTrends<ArtistsTrend>() async {
+    final response = await get(Uri.http('localhost:5000', 'trends'));
+    final data = jsonDecode(response.body);
+
+    return Trends.fromJson(data, TrendType.artists);
   }
 }

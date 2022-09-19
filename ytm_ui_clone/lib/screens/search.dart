@@ -6,6 +6,11 @@ import 'package:ytm_ui_clone/widgets/search_field.dart';
 
 import '../controllers/search_controller.dart';
 
+//TODO: Adicionar histórico de buscas
+//TODO: Adicionar sugestões
+//TODO: adicionar x para limpar texto
+//TODO: Adicionar microfone
+
 class SearchPage extends StatelessWidget {
   const SearchPage({Key? key}) : super(key: key);
 

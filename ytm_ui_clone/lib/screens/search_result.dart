@@ -8,6 +8,8 @@ import 'package:ytm_ui_clone/widgets/search_field.dart';
 
 import '../controllers/search_controller.dart';
 
+//TODO: Adicionar principal resultado
+
 class SearchResult extends StatelessWidget {
   final searchController = Get.find<SearchController>();
 
@@ -100,12 +102,30 @@ class YTSearchItemWidget extends StatelessWidget {
       leading: isArtist(ytSearch.category)
           ? CircleAvatar(
               foregroundImage: NetworkImage(ytSearch.thumbnails![0].url))
-          : CircleAvatar(
-              child: Image.network(ytSearch.thumbnails![0].url),
+          : Image.network(
+              ytSearch.thumbnails![0].url,
+              width: 40,
             ),
       title: isArtist(ytSearch.category)
           ? Text(ytSearch.artist ?? "", maxLines: 2)
           : Text(ytSearch.title ?? '', maxLines: 2),
+      subtitle: isArtist(ytSearch.category)
+          ? Text(
+              ytSearch.artist!,
+              style: TextStyle(
+                  color: Theme.of(context)
+                      .listTileTheme
+                      .textColor!
+                      .withOpacity(0.6)),
+            )
+          : Text(
+              // TODO: não aparecer o bullet se a lista de artistas é nula
+              "${ytSearch.resultType} • ${ytSearch.artists?.map((e) => e.name).toList().join(" & ") ?? ""}",
+              style: TextStyle(
+                  color: Theme.of(context)
+                      .listTileTheme
+                      .textColor!
+                      .withOpacity(0.6))),
       trailing: Icon(Icons.more_vert),
     );
   }
