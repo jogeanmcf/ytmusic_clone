@@ -1,79 +1,65 @@
 import 'package:ytm_ui_clone/models/yt_search.dart';
 
-enum TrendType {
-  videos,
-  artists,
-  songs,
-}
+// enum TrendType {
+//   videos,
+//   artists,
+//   songs,
+// }
 
-class Trends<T> {
+class Trends<TrendType> {
   // String type;
-  List<T> items;
+  List<TrendType> items;
   String? playlist;
-  Trends(
-      {
-      // required this.type,
-      required this.items,
-      this.playlist});
 
-  static Trends fromJson<T>(Map<String, dynamic> json, TrendType type) {
+  Trends({
+    required this.items,
+    this.playlist,
+  });
+
+  static Trends fromJson<T>(Map<String, dynamic> json, String type) {
     switch (type) {
-      case TrendType.artists:
+      case 'artists':
         final data = json['artists'];
         final playlist = data["playlist"];
         final items = data['items']
-            .map<ArtistsTrend>((item) => ArtistsTrend.fromJson(item))
+            .map<OfTypeArtists>((item) => OfTypeArtists.fromJson(item))
             .toList();
-        return Trends(items: items, playlist: playlist);
+        return Trends<OfTypeArtists>(items: items, playlist: playlist);
 
-      case TrendType.videos:
+      case 'videos':
         final data = json['videos'];
         final playlist = data["playlist"];
         final items = data['items']
-            .map<VideosTrend>((item) => VideosTrend.fromJson(item))
+            .map<OfTypeVideos>((item) => OfTypeVideos.fromJson(item))
             .toList();
-        return Trends(items: items, playlist: playlist);
-      case TrendType.songs:
+        return Trends<OfTypeVideos>(items: items, playlist: playlist);
+
+      case 'songs':
         final data = json['songs'];
         final playlist = data["playlist"];
         final items = data['items']
-            .map<SongsTrend>((item) => SongsTrend.fromJson(item))
+            .map<OfTypeSongs>((item) => OfTypeSongs.fromJson(item))
             .toList();
-        return Trends(items: items, playlist: playlist);
+        return Trends<OfTypeSongs>(items: items, playlist: playlist);
+
       default:
+        print('default foi chamado');
         return Trends(items: []);
     }
   }
-
-  // static Trends getTrendsOfType<TrendType>(Map<String, dynamic> json) {
-  //   switch (Type) {
-  //     case Type:
-  //       print('artists');
-  //       return fromJson(json['artists']);
-  //     case Songs:
-  //       print('songs');
-  //       return fromJson(json['songs']);
-  //     case Videos:
-  //       print('videos');
-  //       return fromJson(json['videos']);
-
-  //     default:
-  //       print('Things did not work well');
-  //       return Trends(items: []);
-  //   }
-  // }
 }
 
-class ArtistsTrend {
+class TrendType {}
+
+class OfTypeArtists extends TrendType {
   String browseId;
   String rank;
   String subscribers;
   List<Thumbnail> thumbnails;
   String title;
   String trend;
-  final TrendType type = TrendType.artists;
 
-  ArtistsTrend(
+  OfTypeArtists(
       {required this.browseId,
       required this.rank,
       required this.subscribers,
@@ -81,8 +67,7 @@ class ArtistsTrend {
       required this.title,
       required this.trend});
 
-  @override
-  ArtistsTrend.fromJson(Map<String, dynamic> json)
+  OfTypeArtists.fromJson(Map<String?, dynamic> json)
       : browseId = json["browseId"],
         rank = json["rank"],
         subscribers = json["subscribers"],
@@ -91,16 +76,15 @@ class ArtistsTrend {
         trend = json["trend"];
 }
 
-class VideosTrend {
+class OfTypeVideos extends TrendType {
   List<Artist> artists;
   List<Thumbnail> thumbnails;
   String playlistId;
   String title;
   String videoId;
   String views;
-  final TrendType type = TrendType.videos;
 
-  VideosTrend(
+  OfTypeVideos(
       {required this.artists,
       required this.thumbnails,
       required this.playlistId,
@@ -108,8 +92,7 @@ class VideosTrend {
       required this.videoId,
       required this.views});
 
-  @override
-  VideosTrend.fromJson(Map<String, dynamic> json)
+  OfTypeVideos.fromJson(Map<String?, dynamic> json)
       : artists = Artist.listOf(json["artists"]),
         thumbnails = Thumbnail.thumbnails(json["thumbnails"]),
         playlistId = json["playlistId"],
@@ -118,23 +101,17 @@ class VideosTrend {
         views = json["views"];
 }
 
-class SongsTrend {
-  Album album;
-  List<Artist> artists;
-  bool isExplicit;
-  String rank;
-  List<Thumbnail> thumbnails;
-  String title;
-  String trend;
-  String videoId;
-  final TrendType type = TrendType.songs;
+class OfTypeSongs extends TrendType {
+  Album? album;
+  List<Artist>? artists;
+  bool? isExplicit;
+  String? rank;
+  List<Thumbnail>? thumbnails;
+  String? title;
+  String? trend;
+  String? videoId;
 
-  @override
-  String toString() {
-    return 'songs';
-  }
-
-  SongsTrend({
+  OfTypeSongs({
     required this.album,
     required this.artists,
     required this.isExplicit,
@@ -145,8 +122,7 @@ class SongsTrend {
     required this.videoId,
   });
 
-  @override
-  SongsTrend.fromJson(Map<String, dynamic> json)
+  OfTypeSongs.fromJson(Map<String?, dynamic> json)
       : album = Album.fromJson(json["album"]),
         artists = Artist.listOf(json["artists"]),
         isExplicit = json["isExplicit"],

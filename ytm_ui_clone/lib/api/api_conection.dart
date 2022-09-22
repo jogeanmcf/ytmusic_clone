@@ -28,22 +28,27 @@ class API {
     return MoodAndGenre.listOf(data);
   }
 
-  static Future<Trends> getVideosTrends<VideosTrend>() async {
+  static Future<Map<String, dynamic>> getTrends() async {
     final response = await get(Uri.http('localhost:5000', 'trends'));
-    final data = jsonDecode(response.body);
-    return Trends.fromJson<VideosTrend>(data, TrendType.videos);
+    return jsonDecode(response.body);
   }
 
-  static Future<Trends> getSongsTrends<SongsTrend>() async {
-    final response = await get(Uri.http('localhost:5000', 'trends'));
-    final data = jsonDecode(response.body);
-    return Trends.fromJson(data, TrendType.songs);
-  }
+  // static Future<Trends> getVideosTrends<VideosTrend>() async {
+  //   final response = await get(Uri.http('localhost:5000', 'trends'));
+  //   final data = jsonDecode(response.body);
+  //   return Trends.fromJson<VideosTrend>(data, TrendType.videos);
+  // }
 
-  static Future<Trends> getArtistsTrends<ArtistsTrend>() async {
-    final response = await get(Uri.http('localhost:5000', 'trends'));
-    final data = jsonDecode(response.body);
-
-    return Trends.fromJson(data, TrendType.artists);
-  }
+  // static Future<Trends> getSongsTrends<SongsTrend>() async {
+  //   final response = await get(Uri.http('localhost:5000', 'trends'));
+  //   final data = jsonDecode(response.body);
+  // return Trends.fromJson<SongsTrend>(data, TrendType.songs);
 }
+
+  // static Future<Trends> getArtistsTrends<ArtistsTrend>() async {
+  //   final response = await get(Uri.http('localhost:5000', 'trends'));
+  //   final data = jsonDecode(response.body);
+
+  //   return Trends.fromJson<ArtistsTrend>(data, TrendType.artists);
+  // }
+

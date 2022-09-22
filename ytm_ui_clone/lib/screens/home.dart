@@ -4,8 +4,9 @@ import 'package:ytm_ui_clone/controllers/home_controller.dart';
 import 'package:ytm_ui_clone/models/get_home.dart';
 import 'package:ytm_ui_clone/screens/search.dart';
 import 'package:ytm_ui_clone/widgets/choice_chip_list.dart';
+import 'package:ytm_ui_clone/widgets/videos_trends.dart';
 
-import '../widgets/videos_trends.dart';
+import '../widgets/songs_trends.dart';
 
 //TODO: Adicionar esolhas rápidas
 //TODO: Adicionar parecido com
@@ -71,17 +72,15 @@ class _HomeState extends State<Home> {
                 child: Container(
                     child: Center(child: CircularProgressIndicator())))
             : SliverList(
-                delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return Column(
-                    children: [
-                      Session(homeController.homeContent[index]),
-                      VideosTrendsWidget()
-                    ],
-                  );
-                },
-                childCount: 3,
-              )),
+                delegate: SliverChildListDelegate([
+                // find a way to loop throught the list
+                ...homeController.homeContent
+                    .map<Widget>(
+                      (e) => Session(e),
+                    )
+                    .toList(),
+                VideosTrendsWidget()
+              ])),
       ],
     );
   }

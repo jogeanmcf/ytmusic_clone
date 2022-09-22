@@ -5,23 +5,28 @@ import '../models/trends.dart';
 
 class TrendController extends GetxController {
   bool isLoading = true;
-  Trends? songsTrend;
-  Trends? videosTrend;
-  Trends? artistsTrend;
+  Trends<dynamic>? songsTrend;
+  Trends<dynamic>? videosTrend;
+  Trends<dynamic>? artistsTrend;
 
   @override
   void onInit() async {
-    // songsTrend = await API.getSongsTrends();
-    API.getVideosTrends().then((trend) {
-      videosTrend = trend;
-
-      update();
-      notifyChildrens();
-    });
-    artistsTrend = await API.getArtistsTrends();
-    isLoading = !isLoading;
-
     super.onInit();
+    // final Map<String, dynamic> data = await API.getTrends();
+
+    // songsTrend = Trends.fromJson<OfTypeSongs?>(data);
+    // videosTrend = Trends.fromJson<OfTypeVideos?>(data);
+    // artistsTrend = Trends.fromJson<OfTypeVideos>(data);
+    // isLoading = false;
+    // update();
+
+    API.getTrends().then((data) => {
+          songsTrend = Trends.fromJson<OfTypeSongs?>(data, 'songs'),
+          videosTrend = Trends.fromJson<OfTypeVideos?>(data, 'videos'),
+          artistsTrend = Trends.fromJson<OfTypeVideos>(data, 'artists'),
+          isLoading = false,
+          update(),
+        });
   }
 
   @override

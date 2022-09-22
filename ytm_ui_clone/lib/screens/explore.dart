@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ytm_ui_clone/widgets/custom_appBar.dart';
 import 'package:ytm_ui_clone/widgets/mood_and_genres.dart';
+import 'package:ytm_ui_clone/widgets/songs_trends.dart';
 
 import '../controllers/explore_controller.dart';
 
@@ -36,7 +37,8 @@ class Explore extends StatelessWidget {
           Divider(
             thickness: 0.3,
           ),
-          MoodsAndGenresWidget(exploreController.moodsAndGenres)
+          MoodsAndGenresWidget(exploreController.moodsAndGenres),
+          SongsTrendsWidget()
         ])
       ]),
     );

@@ -65,11 +65,12 @@ class _HomePageState extends State<Main> {
         onTap: _onItemTapped,
         selectedItemColor: Colors.blue,
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () async {
-
-      //   },
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final testingTrends = await API.getTrends();
+          print(testingTrends['songs']);
+        },
+      ),
     );
   }
 }
