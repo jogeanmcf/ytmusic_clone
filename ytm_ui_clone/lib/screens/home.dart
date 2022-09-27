@@ -6,6 +6,7 @@ import 'package:ytm_ui_clone/screens/search.dart';
 import 'package:ytm_ui_clone/widgets/choice_chip_list.dart';
 import 'package:ytm_ui_clone/widgets/videos_trends.dart';
 
+import '../widgets/artists_trends.dart';
 import '../widgets/songs_trends.dart';
 
 //TODO: Adicionar esolhas rápidas
@@ -79,7 +80,7 @@ class _HomeState extends State<Home> {
                       (e) => Session(e),
                     )
                     .toList(),
-                VideosTrendsWidget()
+                ArtistsTrendsWidget()
               ])),
       ],
     );

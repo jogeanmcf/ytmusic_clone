@@ -45,15 +45,15 @@ class VideosTrendsWidget extends StatelessWidget {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 4, mainAxisExtent: 330),
                       itemBuilder: (context, index) {
-                        final OfTypeSongs song =
+                        final OfTypeVideos video =
                             trendController.videosTrend?.items[index];
                         // it is not a good ideia to wrap a widget with expanded or Flexible inside a GridView builder
                         return ListTile(
                           leading: Image.network(
-                            song.thumbnails![0].url,
+                            video.thumbnails[0].url,
                           ),
-                          title: Text(song.title ?? "", maxLines: 2),
-                          subtitle: Text(song.artists?.join().toString() ?? "",
+                          title: Text(video.title, maxLines: 2),
+                          subtitle: Text(video.artists.join().toString(),
                               maxLines: 1),
                           trailing: Icon(Icons.more_vert),
                         );

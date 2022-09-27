@@ -110,25 +110,38 @@ class OfTypeSongs extends TrendType {
   String? title;
   String? trend;
   String? videoId;
+  String? views;
 
-  OfTypeSongs({
-    required this.album,
-    required this.artists,
-    required this.isExplicit,
-    required this.rank,
-    required this.thumbnails,
-    required this.title,
-    required this.trend,
-    required this.videoId,
-  });
+  OfTypeSongs(
+      {this.album,
+      this.artists,
+      this.isExplicit,
+      this.rank,
+      this.thumbnails,
+      this.title,
+      this.trend,
+      this.videoId,
+      this.views});
 
-  OfTypeSongs.fromJson(Map<String?, dynamic> json)
-      : album = Album.fromJson(json["album"]),
-        artists = Artist.listOf(json["artists"]),
-        isExplicit = json["isExplicit"],
-        rank = json["rank"],
-        thumbnails = Thumbnail.thumbnails(json["thumbnails"]),
-        title = json["title"],
-        trend = json["trend"],
-        videoId = json["videoId"];
+  OfTypeSongs.fromJson(Map<String, dynamic> json) {
+    album = json['album'] != null ? new Album.fromJson(json['album']) : null;
+    if (json['artists'] != null) {
+      artists = <Artist>[];
+      json['artists'].forEach((v) {
+        artists!.add(new Artist.fromJson(v));
+      });
+    }
+    isExplicit = json['isExplicit'];
+    rank = json['rank'];
+    if (json['thumbnails'] != null) {
+      thumbnails = <Thumbnail>[];
+      json['thumbnails'].forEach((v) {
+        thumbnails!.add(new Thumbnail.fromJson(v));
+      });
+    }
+    title = json['title'];
+    trend = json['trend'];
+    videoId = json['videoId'];
+    views = json['views'];
+  }
 }

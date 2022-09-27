@@ -51,7 +51,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
   ];
   @override
   void initState() {
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
 
@@ -70,7 +70,6 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
         TabBar(controller: tabController, tabs: const [
           Tab(icon: Text('YT MUSIC')),
           Tab(icon: Text('LIBRARY')),
-          Tab(icon: Text('FILES FROM DEVICE'))
         ]),
         SizedBox(height: 44, child: ChoiceChipList(_filters)),
         Divider(),
@@ -79,7 +78,6 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
             SingleChildScrollView(
                 child: Column(mainAxisSize: MainAxisSize.min, children: _list)),
             Center(child: Icon(Icons.abc)),
-            Center(child: Icon(Icons.cabin))
           ]),
         ),
       ],

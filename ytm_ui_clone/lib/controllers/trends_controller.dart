@@ -21,9 +21,9 @@ class TrendController extends GetxController {
     // update();
 
     API.getTrends().then((data) => {
-          songsTrend = Trends.fromJson<OfTypeSongs?>(data, 'songs'),
           videosTrend = Trends.fromJson<OfTypeVideos?>(data, 'videos'),
-          artistsTrend = Trends.fromJson<OfTypeVideos>(data, 'artists'),
+          artistsTrend = Trends.fromJson<OfTypeArtists?>(data, 'artists'),
+          songsTrend = Trends.fromJson<OfTypeSongs?>(data, 'songs'),
           isLoading = false,
           update(),
         });
