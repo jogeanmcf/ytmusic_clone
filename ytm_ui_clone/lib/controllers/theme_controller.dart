@@ -37,7 +37,7 @@ mixin MyThemeData implements ThemeData {
           unselectedLabelStyle: TextStyle(color: Colors.white),
           selectedIconTheme: IconThemeData(color: Colors.white),
           unselectedIconTheme: IconThemeData(color: Colors.white),
-          selectedItemColor: Colors.red, // doesn't seem to change anyting
+          selectedItemColor: Colors.white, // doesn't seem to change anyting
           unselectedItemColor: Color(0xFFdddddd),
           backgroundColor: Color(0xFF1d1d1d)),
       chipTheme: const ChipThemeData(

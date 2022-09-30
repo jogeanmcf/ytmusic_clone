@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import '../controllers/search_controller.dart';
 import '../screens/search_result.dart';
 
+//TODO: adicionar x para limpar texto
 class SearchField extends StatelessWidget {
-  SearchField({Key? key}) : super();
+  SearchField({Key? key});
   final textController = TextEditingController();
   final searchController = Get.put(SearchController());
 
@@ -15,7 +16,7 @@ class SearchField extends StatelessWidget {
       alignment: Alignment.center,
       height: 36,
       child: TextField(
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         controller: textController,
         onSubmitted: (text) {
           searchController.search(text);

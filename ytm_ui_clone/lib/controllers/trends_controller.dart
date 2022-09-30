@@ -28,10 +28,4 @@ class TrendController extends GetxController {
           update(),
         });
   }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
 }

@@ -4,18 +4,14 @@ import 'package:ytm_ui_clone/controllers/home_controller.dart';
 import 'package:ytm_ui_clone/models/get_home.dart';
 import 'package:ytm_ui_clone/screens/search.dart';
 import 'package:ytm_ui_clone/widgets/choice_chip_list.dart';
-import 'package:ytm_ui_clone/widgets/videos_trends.dart';
-
-import '../widgets/artists_trends.dart';
 import '../widgets/songs_trends.dart';
 
-//TODO: Adicionar esolhas rápidas
 //TODO: Adicionar parecido com
-//TODO: Adicionar Explore (Lançamentos, Paradas, Momentos e Generos)
+//TODO: Adicionar Explore (Lançamentos, Paradas)
 //TODO: Rounded avatar para artistas
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -44,7 +40,7 @@ class _HomeState extends State<Home> {
             children: [
               Image.asset('assets/ytm-logo.png', width: 32, height: 32),
               //todo: mudar o estilo do "Music"
-              Text('Music', style: TextStyle(fontSize: 24))
+              const Text('Music', style: TextStyle(fontSize: 24))
             ],
           ),
           actions: [
@@ -53,12 +49,14 @@ class _HomeState extends State<Home> {
             IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SearchPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SearchPage()));
               },
             ),
             const SizedBox(width: 15),
-            const CircleAvatar(),
+            const Icon(Icons.account_circle, size: 30),
             const SizedBox(width: 15)
           ],
         ),
@@ -69,9 +67,8 @@ class _HomeState extends State<Home> {
           title: ChoiceChipList(options),
         ),
         homeController.isLoading
-            ? SliverToBoxAdapter(
-                child: Container(
-                    child: Center(child: CircularProgressIndicator())))
+            ? const SliverToBoxAdapter(
+                child: Center(child: CircularProgressIndicator()))
             : SliverList(
                 delegate: SliverChildListDelegate([
                 // find a way to loop throught the list
@@ -80,7 +77,7 @@ class _HomeState extends State<Home> {
                       (e) => Session(e),
                     )
                     .toList(),
-                ArtistsTrendsWidget()
+                SongsTrendsWidget()
               ])),
       ],
     );
@@ -123,7 +120,7 @@ class SquareBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20, top: 12, bottom: 24),
+      margin: const EdgeInsets.only(left: 20, top: 12, bottom: 24),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,7 +135,7 @@ class SquareBanner extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           SizedBox(

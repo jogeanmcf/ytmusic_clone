@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get_state_manager/src/simple/get_widget_cache.dart';
 
 class ChoiceChipList extends StatefulWidget {
   final List<String> list;
@@ -28,15 +24,15 @@ class _ChoiceChipListState extends State<ChoiceChipList> {
       child: Row(
           children: choices.entries
               .map<Widget>((entry) => Container(
-                  margin: EdgeInsets.only(left: 4, right: 4),
+                  margin: const EdgeInsets.only(left: 4, right: 4),
                   child: ChoiceChip(
-                    avatarBorder: CircleBorder(
+                    avatarBorder: const CircleBorder(
                         side: BorderSide(
                             width: 2.0,
                             color: Colors
                                 .red)), // TODO: mudar a borda, parece não tá funcionando
                     backgroundColor:
-                        entry.value ? Colors.white : Color(0xFF1a1a1a),
+                        entry.value ? Colors.white : const Color(0xFF1a1a1a),
                     key: Key(entry.key),
                     label: Text(
                       entry.key,

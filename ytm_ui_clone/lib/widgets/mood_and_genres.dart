@@ -22,10 +22,10 @@ class MoodsAndGenresWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [
+            children: const [
               Text(
                 'Moods and Genres',
                 style: TextStyle(fontSize: 24),
@@ -38,7 +38,7 @@ class MoodsAndGenresWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         SizedBox(
@@ -47,20 +47,20 @@ class MoodsAndGenresWidget extends StatelessWidget {
           child: GridView(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 childAspectRatio: 0.35,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 0),
             children: moodsAndGenres.map<Widget>((e) {
               return Container(
-                  margin: EdgeInsets.only(left: 20),
-                  padding: EdgeInsets.only(left: 8),
+                  margin: const EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 8),
                   alignment: Alignment.centerLeft,
                   child: Text(e.title),
                   decoration: BoxDecoration(
                       // borderRadius: BorderRadius.all(Radius.circular(8)),
-                      color: Color.fromARGB(255, 87, 87, 87),
+                      color: const Color.fromARGB(255, 87, 87, 87),
                       border: Border(
                           left: BorderSide(
                               color: (moodAndGenresColors..shuffle()).first,

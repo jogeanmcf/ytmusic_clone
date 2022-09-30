@@ -10,52 +10,68 @@ class VideosTrendsWidget extends StatelessWidget {
   // final SliverGridDelegate gridDelegate = SliverGridDelegate();
   @override
   Widget build(BuildContext context) {
-    print(trendController.videosTrend?.items[0].title.toString());
     return Container(
-      margin: EdgeInsets.only(top: 10, left: 20),
+      margin: const EdgeInsets.only(top: 20, left: 20, bottom: 20),
       height: 290,
       width: double.infinity,
       child: trendController.isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text('INICIAR RÁDIO COM UMA MÚSICA',
-                        style: TextStyle(
-                            color: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.color
-                                ?.withOpacity(0.7))),
-                    Text('Escolhas rápidas',
+                    const Text('Top videos',
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.w600)),
+                    Container(
+                        margin: const EdgeInsets.only(right: 20),
+                        child: const Text('More'))
                   ],
                 ),
                 Expanded(
                   child: GridView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: trendController.videosTrend?.items.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4, mainAxisExtent: 330),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 4, mainAxisExtent: 330),
                       itemBuilder: (context, index) {
                         final OfTypeVideos video =
                             trendController.videosTrend?.items[index];
                         // it is not a good ideia to wrap a widget with expanded or Flexible inside a GridView builder
                         return ListTile(
-                          leading: Image.network(
-                            video.thumbnails[0].url,
+                          leading: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(
+                                width: 60,
+                                child: Image.network(
+                                  video.thumbnails[0].url,
+                                  scale: 1,
+                                ),
+                              ),
+                              Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Text(index.toString()))
+                            ],
                           ),
                           title: Text(video.title, maxLines: 2),
-                          subtitle: Text(video.artists.join().toString(),
-                              maxLines: 1),
-                          trailing: Icon(Icons.more_vert),
+                          subtitle: Text(
+                            video.artists
+                                .map((artist) => artist.name)
+                                .join(' • '),
+                            maxLines: 1,
+                            style:
+                                TextStyle(color: Colors.white.withOpacity(0.7)),
+                          ),
+                          trailing: const Icon(Icons.more_vert),
                         );
                       }),
                 ),

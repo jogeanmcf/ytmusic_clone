@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ytm_ui_clone/api/api_conection.dart';
-import 'package:ytm_ui_clone/main.dart';
 import 'package:ytm_ui_clone/models/yt_search.dart';
 import 'package:ytm_ui_clone/widgets/choice_chip_list.dart';
 import 'package:ytm_ui_clone/widgets/search_field.dart';
@@ -23,9 +21,14 @@ class SearchResult extends StatelessWidget {
           return Scaffold(
               appBar: AppBar(
                 title: SearchField(),
+                actions: [
+                  Container(
+                      margin: const EdgeInsets.only(right: 20),
+                      child: const Icon(Icons.mic))
+                ],
               ),
               body: searchController.isLoading
-                  ? Center(child: CircularProgressIndicator())
+                  ? const Center(child: CircularProgressIndicator())
                   : Body(searchResult: searchController.searchResult));
         });
   }
@@ -72,12 +75,12 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
           Tab(icon: Text('LIBRARY')),
         ]),
         SizedBox(height: 44, child: ChoiceChipList(_filters)),
-        Divider(),
+        const Divider(),
         Expanded(
           child: TabBarView(controller: tabController, children: [
             SingleChildScrollView(
                 child: Column(mainAxisSize: MainAxisSize.min, children: _list)),
-            Center(child: Icon(Icons.abc)),
+            const Center(child: Icon(Icons.abc)),
           ]),
         ),
       ],
@@ -124,7 +127,7 @@ class YTSearchItemWidget extends StatelessWidget {
                       .listTileTheme
                       .textColor!
                       .withOpacity(0.6))),
-      trailing: Icon(Icons.more_vert),
+      trailing: const Icon(Icons.more_vert),
     );
   }
 }
@@ -147,13 +150,13 @@ class BlocCategory extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ListTile(
           leading: Text(
             category,
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
-          trailing: Icon(Icons.keyboard_arrow_right), // mudar isso
+          trailing: const Icon(Icons.keyboard_arrow_right), // mudar isso
         ),
         Column(
           mainAxisSize: MainAxisSize.min,

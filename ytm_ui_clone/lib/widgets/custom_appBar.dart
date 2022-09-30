@@ -12,22 +12,24 @@ class CustomAppBar extends AppBar {
             children: [
               Image.asset('assets/ytm-logo.png', width: 32, height: 32),
               //todo: mudar o estilo do "Music"
-              Text('Music', style: TextStyle(fontSize: 24))
+              const Text('Music', style: TextStyle(fontSize: 24))
             ],
           ),
           actions: [
-            Icon(Icons.cast),
-            SizedBox(width: 15),
+            const Icon(Icons.cast),
+            const SizedBox(width: 15),
             IconButton(
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SearchPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SearchPage()));
               },
             ),
-            SizedBox(width: 15),
-            CircleAvatar(),
-            SizedBox(width: 15)
+            const SizedBox(width: 15),
+            const Icon(Icons.account_circle, size: 30),
+            const SizedBox(width: 15)
           ],
           //   );
         );

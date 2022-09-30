@@ -43,7 +43,6 @@ class Trends<TrendType> {
         return Trends<OfTypeSongs>(items: items, playlist: playlist);
 
       default:
-        print('default foi chamado');
         return Trends(items: []);
     }
   }
@@ -124,11 +123,11 @@ class OfTypeSongs extends TrendType {
       this.views});
 
   OfTypeSongs.fromJson(Map<String, dynamic> json) {
-    album = json['album'] != null ? new Album.fromJson(json['album']) : null;
+    album = json['album'] != null ? Album.fromJson(json['album']) : null;
     if (json['artists'] != null) {
       artists = <Artist>[];
       json['artists'].forEach((v) {
-        artists!.add(new Artist.fromJson(v));
+        artists!.add(Artist.fromJson(v));
       });
     }
     isExplicit = json['isExplicit'];
@@ -136,7 +135,7 @@ class OfTypeSongs extends TrendType {
     if (json['thumbnails'] != null) {
       thumbnails = <Thumbnail>[];
       json['thumbnails'].forEach((v) {
-        thumbnails!.add(new Thumbnail.fromJson(v));
+        thumbnails!.add(Thumbnail.fromJson(v));
       });
     }
     title = json['title'];

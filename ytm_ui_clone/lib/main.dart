@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ytm_ui_clone/controllers/theme_controller.dart';
-import 'package:ytm_ui_clone/models/trends.dart';
 import 'package:ytm_ui_clone/screens/explore.dart';
 import 'package:ytm_ui_clone/screens/home.dart';
 import 'package:ytm_ui_clone/screens/library.dart';
-import 'package:ytm_ui_clone/api/api_conection.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: themeControler.getTheme,
       debugShowCheckedModeBanner: false,
-      home: Main(),
+      home: const Main(),
     );
   }
 }
@@ -33,7 +31,11 @@ class Main extends StatefulWidget {
 }
 
 class _HomePageState extends State<Main> {
-  List<Widget> _screenOptions = [Home(), Explore(), Library()];
+  final List<Widget> _screenOptions = [
+    const Home(),
+    Explore(),
+    const Library()
+  ];
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -48,9 +50,9 @@ class _HomePageState extends State<Main> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-              icon:
-                  Icon(_selectedIndex == 0 ? Icons.home : Icons.home_outlined),
-              label: 'Start'),
+            icon: Icon(_selectedIndex == 0 ? Icons.home : Icons.home_outlined),
+            label: 'Start',
+          ),
           BottomNavigationBarItem(
               icon: Icon(
                   _selectedIndex == 1 ? Icons.explore : Icons.explore_outlined),
@@ -63,13 +65,7 @@ class _HomePageState extends State<Main> {
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedItemColor: Colors.blue,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final testingTrends = await API.getTrends();
-          print(testingTrends['songs']);
-        },
+        // selectedItemColor: Colors.white,
       ),
     );
   }
