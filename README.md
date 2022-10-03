@@ -17,3 +17,6 @@ The result can be seen in the gif bellow
 The back-end is not ready yet.
 
 ## TODO
+
+- Add functionality to cosume streeming songs and videos
+- Enable ui for wide screens 
